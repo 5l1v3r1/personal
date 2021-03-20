@@ -5,7 +5,7 @@ _Various scripts that I have created for my gentoo setups since 2008, some are o
 _Please!! Do not report issues or bugs for anything in this repository, this repos exists for fun and all tools have been created for my own setups and and they can work differently on your setup_
 
 | Script/Tool        | Description    | Author | License |
-| :----------------- | :------------- | :------- | :---------: | :--------- | 
+| :------------- | :------- | :---------: | :--------- | 
 | install.sh         | Install gentoo with an encrypted root with keyfile required                | 
 | chroot             | Chroot script, place it on your usb and you wont need chroot manually      | wuseman | GPL 3.0 |
 | wupdate            | This tool is for faciliate the work with portage for Gentoo Linux          | wuseman | GPL 3.0 |
