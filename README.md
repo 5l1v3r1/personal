@@ -6,23 +6,10 @@ _Please!! Do not report issues or bugs for anything in this repository, this rep
 
 | Script/Tool        | Description    | Author | License |
 | :------------- | :------- | :---------: | :--------- | 
-| install.sh         | Install gentoo with an encrypted root with keyfile required                | 
+| install.sh         | Install gentoo with an encrypted root with keyfile required                | wuseman | GPL 3.0 |
 | chroot             | Chroot script, place it on your usb and you wont need chroot manually      | wuseman | GPL 3.0 |
 | wupdate            | This tool is for faciliate the work with portage for Gentoo Linux          | wuseman | GPL 3.0 |
 | Hetzner            | Install gentoo with fully encrypted enviroment on a server form hetzner.de | wuseman | GPL 3.0 |
-| create-bootx64.efi | setup yorur efi partition when using efibootmmgr
+| create-bootx64.efi | setup yorur efi partition when using efibootmmgr                           | wuseman | GPL 3.0
 
 
-# HOWTO
-
-     Edit below lines at top:
-     ROOT_PARTITION=""
-     BOOT_PARTITION="" 
-     KEYFILE=""
-     MOUNT_DIR=""
-
-# KEYFILE
-
-### DO NOT FORGET TO COPY YOUR KEYFILE TO A USB OR WHEREVER YOU WANNA STORE IT
-
-    mv /root/keyfile.txt /boot/
