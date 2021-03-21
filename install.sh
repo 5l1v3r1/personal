@@ -1,44 +1,28 @@
 #!/bin/bash
 # Author: ${USER}
 
-# EDIT BELOW #########################################################################
 
-# System disk
-SYSTEM_DISK="/dev/sda"
+#  Setinggs ############################################################################
+SYSTEM_DISK="/dev/sda"                         # System disk
+ROOT_PARTITION="/dev/sda3"                     # Root partitom
+BOOT_PARTITION="/dev/sda2"                     # Boot partition
+KEY_FILE=""             # Keyfile                 # (EDIT THIS)
+VGNAME="latitude"                              # VGName                  # (EDIT THIS)
+LVNAME="rootfs"                                # LVMName
+DECRYPTED_DRIVE="${VGNAME}"                    # VGName
+MOUNT_DIR="/mnt/gentoo"                        # Mount dir
+USER="${USER}"                                 # Username to use
+CIPHER="twofish-xts-plain64"                   # Chiper
+#  End pf settimgs #########################################################################
 
-# Root partitom
-ROOTFS_NUMBER="3"
-ROOT_PARTITION="${SYSTEM_DISK}${ROOTFS_NUMBER}"
 
-# Boot partion - Number only
-BOOT_NUMBER="2"
-BOOT_PARTITION="${SYSTEM_DISK}${BOOT_NUMBER}"
-
-# Set keyfile name (Example)
-KEY_FILE="thinkpad-w541__key.txt"
-
-# LVM  (example)
-VGNAME="thinkpad"
-LVNAME="rootfs"
-DECRYPTED_DRIVE="${VGNAME}"
-
-# Where to put gentoo
-MOUNT_DIR="${MOUNT_DIR}"
-
-# Username for your account
-USER="${USER}"
-
-# Chiper for your encrypted root partition
-CIPHER="twofish-xts-plain64"
-
-######################################################################################
 
 ### Create partitions
 parted -a optimal ${SYSTEM_DISK} -s print
 parted -a optimal ${SYSTEM_DISK} -s mklabel gpt
 echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary 1 2
-echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary 2 500
-echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary "500 -1"
+echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary 2 1000
+echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary "1000 -1"
 parted -a optimal ${SYSTEM_DISK} -s name 1 1
 parted -a optimal ${SYSTEM_DISK} -s name 2 2
 parted -a optimal ${SYSTEM_DISK} -s name 3 3
@@ -49,37 +33,39 @@ parted -a optimal ${SYSTEM_DISK} -s print
 
 # Create keyfile / Encryot our druve
 # For also move key to usb
-dd if=/dev/urandom of=${KEY_FILE} bs=8M count=1
-mkfs.ext4 ${BOOT_PARTITION}
-
+dd if=/dev/urandom of=${KEY_FILE} bs=8M count=1   # Create keyfile
+dd if=/dev/urandom of=${BOOT_PARTITION} bs=128M   # Write over old data
+#...OBS OBS 
+mkfs.ext4 ${BOOT_PARTITION}                       # BIOS
+mkfs.vfat -F32 ${BOOT_PARTITION}                  # EFI
+# ...
 # Backup yoru usb key during install in boot dir
 # it is really easy to forget this and then you are
 # fucked when you will reboot, allways backup your
 # keyfile on another device for your own safet
 # remove keyfile frmo boot when you have made a backup on a usb or something
-mkdir temp
-mount ${BOOT_PARTITION} temp
-cp ${KEY_FILE} temp/
-umount temp/
+mkdir ./temp
+mount ${BOOT_PARTITION} ./temp
+cp ${KEY_FILE} ./temp/
+umount ./temp/
 
 # Encrypt drive
-echo "YES"|cryptsetup -d ${KEY_FILE} --hash sha512 --iter-time 5000 --use-random --cipher ${CIPHER}  luksFormat ${ROOT_PARTITION}
 echo "YES"|cryptsetup -d ${KEY_FILE} luksOpen ${ROOT_PARTITION} ${LVNAME}
 
 # Ignore annoying error mesage 
 /etc/init.d/lvmetad start
 
 # SetupLVM
-pvcreate /dev/mapper/rootfs
-vgcreate ${VGNAME} /dev/mapper/rootfs
+pvcreate /dev/mapper/${LVNAME}
+vgcreate ${VGNAME} /dev/mapper/${LVNAME}
 lvcreate -l100%FREE -n${LVNAME} ${VGNAME}
 
 # Create filesystem on boot and root
-mkfs.ext4 /dev/mapper/thinkpad-rootfs
+mkfs.ext4 /dev/mapper/${VGNAME}-${LVNAME}
 
 # Prepare for downloading stage3
 mkdir ${MOUNT_DIR}
-mount /dev/mapper/thinkpad-rootfs ${MOUNT_DIR}
+mount /dev/mapper/${VGNAME}-${LVNAME} ${MOUNT_DIR}
 mkdir ${MOUNT_DIR}/boot
 cd ${MOUNT_DIR}
 mount /dev/sda2 ${MOUNT_DIR}/boot
@@ -171,20 +157,30 @@ FLAGS=$(cpuid2cpuflags|cut -d: -f2);echo -e $FLAGS|sed 's/^/CPU_FLAGS_X86="/g'|s
 emerge --ask --verbose --oneshot portage
 
 # Install needed packages before creating kernel
-echo -e "# custom by ${USER}\nsys-kernel/gentoo-sources symlink\nsys-kernel/genkernel cryptsetup\nsys-boot/grub:2 device-mapper net-misc/dhcpcd" > /etc/portage/package.use/kernel
+echo -e "# custom by ${USER}\nsys-kernel/gentoo-sources symlink\nsys-kernel/genkernel cryptsetup\nsys-boot/grub:2 device-mapper\nnet-misc/dhcpcd" > /etc/portage/package.use/kernel
 
 # Emerge required packages
-emerge --ask gentoo-sources genkernel grub:2 cryptsetup app-portage/eix net-misc/dhcpcd
+emerge --ask gentoo-sources genkernel grub:2 cryptsetup net-misc/dhcpcd app-portage/eix
+
+### Genkernel settings
+sed -i 's/#OLDCONFIG="yes"/OLDCONFIG="yes"/g' /etc/genkernel.conf
+sed -i 's/#MENUCONFIG="no"/MENUCONFIG="yes"/g' /etc/genkernel.conf
+sed -i 's/#SAVE_CONFIG="yes"/SAVE_CONFIG="yes"/g' /etc/genkernel.conf
+sed -i 's/#LVM="no"/LVM="yes"/g' /etc/genkernel.conf
+sed -i 's/#LUKS="no"/LUKS="yes"/g' /etc/genkernel.conf
+sed -i 's/#NFS="no"/NFS="yes"/g' /etc/genkernel.conf
 
 # Create initramfsd
 genkernel --lvm --luks initramfs
 
 ## GRUB
-### For EFI Bra
+#...OBS OBS......................................
+### For EFI 
 grub-install --target=x86_64-efi /dev/sda --efi-directory=/boot/efi --boot-directory=/boot
 
-### Without EFI
+### For legacy
 grub-install /dev/sda
+#...OBS OBS......................................
 
 ### Generate grub config
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -209,16 +205,6 @@ for apps in dhcpcd iptables hostname keymaps;
    do rc-update add $apps
 done
 
-
-### Genkernel
-sed -i 's/#OLDCONFIG="yes"/OLDCONFIG="yes"/g' /etc/genkernel.conf
-sed -i 's/#MENUCONFIG="no"/MENUCONFIG="yes"/g' /etc/genkernel.conf
-sed -i 's/#SAVE_CONFIG="yes"/SAVE_CONFIG="yes"/g' /etc/genkernel.conf
-sed -i 's/#LVM="no"/LVM="yes"/g' /etc/genkernel.conf
-sed -i 's/#LUKS="no"/LUKS="yes"/g' /etc/genkernel.conf
-sed -i 's/#NFS="no"/NFS="yes"/g' /etc/genkernel.conf
-
-
 ################################### ADD LATER
 is_boot_mounted() {
 	  mount|grep -iq boot
@@ -228,13 +214,6 @@ if [[ $? -gt "0" ]]; then
  #    exit 1
 fi
 }
-
-
-# GRUB
-crypt_root=UUID=20c710ee-1c9c-4d4f-9542-2efa46f4c93d real_root=UUID=1587340d-14d8-4876-855a-75a0c2a96275 \
-root_keydev=UUID=b65f36a2-eec7-45f6-96c6-cedd40b6f954 \
-root_key=thinkpad-w541__key.txt \
-root_key=thinkpad-w541__key.txt quiet dolvm rootfstype=ext4 /etc/default/grub
 
 ############## ADD STUFF LASTER ##############
 
