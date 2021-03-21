@@ -35,10 +35,12 @@ parted -a optimal ${SYSTEM_DISK} -s print
 # For also move key to usb
 dd if=/dev/urandom of=${KEY_FILE} bs=8M count=1   # Create keyfile
 dd if=/dev/urandom of=${BOOT_PARTITION} bs=128M   # Write over old data
+
 #...OBS OBS 
 mkfs.ext4 ${BOOT_PARTITION}                       # BIOS
 mkfs.vfat -F32 ${BOOT_PARTITION}                  # EFI
 # ...
+
 # Backup yoru usb key during install in boot dir
 # it is really easy to forget this and then you are
 # fucked when you will reboot, allways backup your
@@ -49,7 +51,9 @@ mount ${BOOT_PARTITION} ./temp
 cp ${KEY_FILE} ./temp/
 umount ./temp/
 
-# Encrypt drive
+# Downloading stage3 and extractin
+# Find todays stage 3 package on below link
+#https://mirror.leaseweb.com/gentoo/releases/amd64/autobuilds/current-stage3-amd64
 echo "YES"|cryptsetup -d ${KEY_FILE} --hash sha512 --iter-time 5000 --use-random --cipher ${CIPHER} luksFormat ${ROOT_PARTITION}
 echo "YES"|cryptsetup -d ${KEY_FILE} luksOpen ${ROOT_PARTITION} ${LVNAME}
 
