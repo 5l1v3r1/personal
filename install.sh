@@ -1,21 +1,21 @@
 #!/bin/bash
 # Author: ${USER}
 
+# EDIT BELOW #########################################################################
 
-#  Setinggs ############################################################################
+# System disk
 SYSTEM_DISK="/dev/sda"                         # System disk
 ROOT_PARTITION="/dev/sda3"                     # Root partitom
 BOOT_PARTITION="/dev/sda2"                     # Boot partition
-KEY_FILE=""             # Keyfile                 # (EDIT THIS)
+KEY_FILE="latitude_e5450__key.txt"             # Keyfile                 # (EDIT THIS)
 VGNAME="latitude"                              # VGName                  # (EDIT THIS)
 LVNAME="rootfs"                                # LVMName
 DECRYPTED_DRIVE="${VGNAME}"                    # VGName
 MOUNT_DIR="/mnt/gentoo"                        # Mount dir
 USER="${USER}"                                 # Username to use
 CIPHER="twofish-xts-plain64"                   # Chiper
-#  End pf settimgs #########################################################################
 
-
+######################################################################################
 
 ### Create partitions
 parted -a optimal ${SYSTEM_DISK} -s print
@@ -50,6 +50,7 @@ cp ${KEY_FILE} ./temp/
 umount ./temp/
 
 # Encrypt drive
+echo "YES"|cryptsetup -d ${KEY_FILE} --hash sha512 --iter-time 5000 --use-random --cipher ${CIPHER} luksFormat ${ROOT_PARTITION}
 echo "YES"|cryptsetup -d ${KEY_FILE} luksOpen ${ROOT_PARTITION} ${LVNAME}
 
 # Ignore annoying error mesage 
