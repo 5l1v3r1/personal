@@ -2,63 +2,67 @@
 # Author: ${USER}
 
 # EDIT BELOW #########################################################################
-
 # System disk
-SYSTEM_DISK="/dev/sda"                         # System disk
-ROOT_PARTITION="/dev/sda3"                     # Root partitom
-BOOT_PARTITION="/dev/sda2"                     # Boot partition
-KEY_FILE="latitude_e5450__key.txt"             # Keyfile                 # (EDIT THIS)
-VGNAME="latitude"                              # VGName                  # (EDIT THIS)
-LVNAME="rootfs"                                # LVMName
-DECRYPTED_DRIVE="${VGNAME}"                    # VGName
-MOUNT_DIR="/mnt/gentoo"                        # Mount dir
-USER="${USER}"                                 # Username to use
-CIPHER="twofish-xts-plain64"                   # Chiper
+SYSTEM_DISK="/dev/sda"                                                # System disk
+ROOT_PARTITION="/dev/sda3"                                            # Root partitom
+BOOT_PARTITION="/dev/sda2"                                            # Boot partition
+KEY_FILE="latitude_e5450__key.txt"                                    # Keyfile                 # (EDIT THIS)
+VGNAME="latitude"                                                     # VGName                  # (EDIT THIS)
+LVNAME="rootfs"                                                       # LVMName
+DECRYPTED_DRIVE="${VGNAME}"                                           # VGName
+MOUNT_DIR="/mnt/gentoo"                                               # Mount dir
+USER="${USER}"                                                        # Username to use
+CIPHER="twofish-xts-plain64"                                          # Chiper
 
 ######################################################################################
 
 ### Create partitions
-parted -a optimal ${SYSTEM_DISK} -s print
-parted -a optimal ${SYSTEM_DISK} -s mklabel gpt
-echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary 1 2
-echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary 2 1000
-echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s mkpart primary "1000 -1"
-parted -a optimal ${SYSTEM_DISK} -s name 1 1
-parted -a optimal ${SYSTEM_DISK} -s name 2 2
-parted -a optimal ${SYSTEM_DISK} -s name 3 3
-parted -a optimal ${SYSTEM_DISK} -s set 1 bios_grub on
-parted -a optimal ${SYSTEM_DISK} -s set 2 boot on
-parted -a optimal ${SYSTEM_DISK} -s set 2 esp on
-parted -a optimal ${SYSTEM_DISK} -s print
+# Check data
+parted -a optimal ${SYSTEM_DISK} -s "print"
 
-# Create keyfile / Encryot our druve
-# For also move key to usb
+# Create labe
+parted -a optimal ${SYSTEM_DISK} -s "mklabel gpt"
+
+echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s "mkpart primary 1 2"
+echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s "mkpart primary 2 1000"
+echo "Yes"|parted -a optimal ${SYSTEM_DISK} -s "mkpart primary 1000 -1"
+# Create partitions + set boot partiton to boot
+parted -a optimal ${SYSTEM_DISK} -s "name 1 1"
+parted -a optimal ${SYSTEM_DISK} -s "name 2 2"
+parted -a optimal ${SYSTEM_DISK} -s "name 3 3"
+parted -a optimal ${SYSTEM_DISK} -s "set 1 bios_grub on"
+parted -a optimal ${SYSTEM_DISK} -s "set 2 boot on"
+parted -a optimal ${SYSTEM_DISK} -s "set 2 esp on"
+# Print result from above
+parted -a optimal ${SYSTEM_DISK} -s "print"
+
+# Creat keyfile
 dd if=/dev/urandom of=${KEY_FILE} bs=8M count=1   # Create keyfile
+
+#Wirte random data 
 dd if=/dev/urandom of=${BOOT_PARTITION} bs=128M   # Write over old data
 
-#...OBS OBS 
-mkfs.ext4 ${BOOT_PARTITION}                       # BIOS
-mkfs.vfat -F32 ${BOOT_PARTITION}                  # EFI
-# ...
+# Set foöesuste, up prefer
+mkfs.ext4  ${BOOT_PARTITION}       # LEVACY
+mkfs.vfat -F32  ${BOOT_PARTITION}  #FI
 
+# fi Backup Key
 # Backup yoru usb key during install in boot dir
 # it is really easy to forget this and then you are
 # fucked when you will reboot, allways backup your
 # keyfile on another device for your own safet
 # remove keyfile frmo boot when you have made a backup on a usb or something
 mkdir ./temp
-mount ${BOOT_PARTITION} ./temp
+mount /dev/sda1 ./temp
 cp ${KEY_FILE} ./temp/
 umount ./temp/
 
-# Downloading stage3 and extractin
-# Find todays stage 3 package on below link
-#https://mirror.leaseweb.com/gentoo/releases/amd64/autobuilds/current-stage3-amd64
-echo "YES"|cryptsetup -d ${KEY_FILE} --hash sha512 --iter-time 5000 --use-random --cipher ${CIPHER} luksFormat ${ROOT_PARTITION}
-echo "YES"|cryptsetup -d ${KEY_FILE} luksOpen ${ROOT_PARTITION} ${LVNAME}
+# Encrypt drive
+echo "YES"|cryptsetup -d ${KEY_FILE} --hash sha512 --iter-time 5000 --use-random --cipher ${CIPHER} luksFormat /dev/sda2
+echo "YES"|cryptsetup -d ${KEY_FILE} luksOpen /dev/sda2 ${LVNAME}
 
 # Ignore annoying error mesage 
-/etc/init.d/lvmetad start
+mkfs.ext4 /dev/mapper/latitude-rootfs
 
 # SetupLVM
 pvcreate /dev/mapper/${LVNAME}
@@ -68,6 +72,7 @@ lvcreate -l100%FREE -n${LVNAME} ${VGNAME}
 # Create filesystem on boot and root
 mkfs.ext4 /dev/mapper/${VGNAME}-${LVNAME}
 
+# 
 # Prepare for downloading stage3
 mkdir ${MOUNT_DIR}
 mount /dev/mapper/${VGNAME}-${LVNAME} ${MOUNT_DIR}
@@ -82,11 +87,11 @@ wget https://mirror.leaseweb.com/gentoo/releases/amd64/autobuilds/current-stage3
 tar xvJpf stage3-amd64-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
 # We want .bashrc_pofile as default and we remove stage3 tarball
-cp -v ${MOUNT_DIR}/etc/skel/.bash_profile ${MOUNT_DIR}/root/
+cp -v /mnt/gentoo/etc/skel/.bash_profile /mnt/gentoo/root/
 rm -v -f ${MOUNT_DIR}/stage3-amd64-*
 
 # Setup default bashrc
-cat << 'EOF' > ${MOUNT_DIR}/root/.bashrc
+cat << 'EOF' > /mnt/gentoo/root/.bashrc
 export NUMCPUS=$(nproc)
 export NUMCPUSPLUSONE=$(( NUMCPUS + 1 ))
 export MAKEOPTS="-j${NUMCPUSPLUSONE} -l${NUMCPUS}"
@@ -94,7 +99,7 @@ export EMERGE_DEFAULT_OPTS="--jobs=${NUMCPUSPLUSONE} --load-average=${NUMCPUS}"
 EOF
 
 # Setup make.conf
-cat << 'EOF' > ${MOUNT_DIR}/etc/portage/make.conf
+cat << 'EOF' > /mnt/gentoo/etc/portage/make.conf
 COMMON_FLAGS="-march=native -O2 -pipe"
 CFLAGS="${COMMON_FLAGS}"
 CXXFLAGS="${COMMON_FLAGS}"
@@ -112,7 +117,7 @@ LC_MESSAGES=C
 PORTAGE_ELOG_CLASSES="info warn error log qa"
 PORTAGE_ELOG_SYSTEM="echo save"
 FEATURES="split-elog buildpkg"
-VIDEO_CARDS="intel i915 nouveau"
+VIDEO_CARDS="intel i915"
 INPUT_DEVICES="libinput"
 GRUB_PLATFORMS="pc"
 EOF
@@ -138,11 +143,15 @@ mkdir -p -v ${MOUNT_DIR}/etc/portage/package.accept_keywords
 
 # Edit keyboard lang for cli
 sed -i 's/us/sv-latin1/g' ${MOUNT_DIR}/etc/conf.d/keymaps
+ 
 
 # CHROOT
 chroot ${MOUNT_DIR} /bin/bash
 source /etc/profile
 export PS1="(chroot) $PS1"
+
+# Sync portage
+emerge --sync
 
 # Remove/Purge news from devs
 eselect news purge
@@ -165,7 +174,7 @@ emerge --ask --verbose --oneshot portage
 echo -e "# custom by ${USER}\nsys-kernel/gentoo-sources symlink\nsys-kernel/genkernel cryptsetup\nsys-boot/grub:2 device-mapper\nnet-misc/dhcpcd" > /etc/portage/package.use/kernel
 
 # Emerge required packages
-emerge --ask gentoo-sources genkernel grub:2 cryptsetup net-misc/dhcpcd app-portage/eix
+emerge --ask gentoo-sources genkernel grub:2 
 
 ### Genkernel settings
 sed -i 's/#OLDCONFIG="yes"/OLDCONFIG="yes"/g' /etc/genkernel.conf
@@ -180,7 +189,7 @@ genkernel --lvm --luks initramfs
 
 ## GRUB
 #...OBS OBS......................................
-### For EFI 
+### For EFI  (GRUB)
 grub-install --target=x86_64-efi /dev/sda --efi-directory=/boot/efi --boot-directory=/boot
 
 ### For legacy
