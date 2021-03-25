@@ -59,19 +59,19 @@ umount ./temp/
 
 # Encrypt drive
 echo "YES"|cryptsetup -d ${KEY_FILE} --hash sha512 --iter-time 5000 --use-random --cipher ${CIPHER} luksFormat /dev/sda2
-echo "YES"|cryptsetup -d ${KEY_FILE} luksOpen /dev/sda2 ${LVNAME}
-
-# Ignore annoying error mesage 
-mkfs.ext4 /dev/mapper/latitude-rootfs
+echo "YES"|cryptsetup -d ${KEY_FILE} luksOpen /dev/sda3 ${LVNAME}
 
 # SetupLVM
 pvcreate /dev/mapper/${LVNAME}
 vgcreate ${VGNAME} /dev/mapper/${LVNAME}
 lvcreate -l100%FREE -n${LVNAME} ${VGNAME}
 
-# Create filesystem on boot and root
-mkfs.ext4 /dev/mapper/${VGNAME}-${LVNAME}
+# Ignore annoying error mesage 
+mkfs.ext4 /dev/mapper/latitude-rootfs
 
+
+# Create filesystem on boot and root
+mkfs.ext4 /dev/mapper/latitude-rootfs
 # 
 # Prepare for downloading stage3
 mkdir ${MOUNT_DIR}
