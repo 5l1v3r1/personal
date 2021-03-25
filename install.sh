@@ -150,9 +150,6 @@ chroot ${MOUNT_DIR} /bin/bash
 source /etc/profile
 export PS1="(chroot) $PS1"
 
-# Sync portage
-emerge --sync
-
 # Remove/Purge news from devs
 eselect news purge
 
