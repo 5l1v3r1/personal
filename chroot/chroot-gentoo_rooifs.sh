@@ -68,10 +68,10 @@ echo -e "\e[1;35m  -//////:--"
 echo -e "\e[0m"
 }
 
-if [[ $EUID -ne 0 ]]; then
-         echo -e "\nYou must be Administrator to run this script\n" 2>&1
-         exit 1
-fi
+you_must_be_root() {
+    (( ${EUID} > 0 )) && printf "%s\n" "$basename$0: internal error -- root privileges is required" && exit 1
+}
+
 
 help() {
 cat << "EOF"
