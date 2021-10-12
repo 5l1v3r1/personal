@@ -7,7 +7,10 @@ In this repository I will store everything that is related to my setups I using 
 
 ### wupdate/wupdate.sh
 
-* One of my first Gentoo related scripts for working in cli easier, I cant imagine this is 13y old. I am really proud over some of the awesome stuff some of the oneliners can do ;) Gentoo Magic!
+![Screenshot](previews/wupdate.png)
+
+* One of my first Gentoo related scripts for working in cli easier, I cant imagine this is 13y old. I am really proud over some of the awesome stuff oneliners in this script to be honest ;) Bash, magiiiic (yep, sed and awk mostly) - See the picture for featrures :)
+
 
 ### install.sh
 
