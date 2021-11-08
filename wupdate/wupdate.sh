@@ -242,7 +242,16 @@ options=("Sync Portage Tree"
                         file "$(type -P $command)" 2>/dev/null; exit ;;
 
                     "View Emerged Packages By Time From Bottom To Top")
-                        genlop -l; exit ;; 
+                        hash genlop &> /dev/null; 
+                            if [[ $? -ne 0 ]]; then 
+                                echo -e "$basename$0: internal error -- genlop is required to be installed, exiting..."; 
+                                exit 1
+                            else
+                                echo -e "Please wait, this might take some time..."
+                                genlop -l
+                            fi 
+
+                        exit ;; 
 
                     "Preview All Packages That Has Been Installed From An Overlay")
                         eix -c --installed-overlay; exit ;;
