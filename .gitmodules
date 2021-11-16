@@ -1,0 +1,3 @@
+[submodule "wuseman-overlay"]
+	path = wuseman-overlay
+	url = https://github.com/wuseman/wuseman-overlay
