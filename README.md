@@ -7,8 +7,9 @@ In this repository I will store everything that is related to my setups I using 
 
 ### Various of my machines that I using and used back in the days, it may help someone
 
-   Dell Optiplex 7040M - Enter the dir for more info if you curios for more info, there is alot of pics and configs for this machine in dell_optiplex_7040m
+More info and previews about my Dell Optiplex 7040M is stored in [dell_optiplex_7040m](https://github.com/wuseman/gentoo-wuseman/tree/main/dell_optiplex_7040m)
 
+   ![Screenshot](https://raw.githubusercontent.com/wuseman/gentoo-wuseman/main/dell_optiplex_7040m/.previews/30.jpg)
 ### wupdate/wupdate.sh
 
 ![Screenshot](.previews/wupdate.png)
