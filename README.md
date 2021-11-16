@@ -1,4 +1,4 @@
-# Gentoo related stuff by wuseman
+# This is my home :) 
 
 In this repository I will store everything that is related to my setups I using daily for servers, mobile and laptops and raspberry pies and so, Gentoo is my the only distro I use for evgerything even my dedi servers on Hetzner :) 
 
