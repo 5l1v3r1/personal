@@ -13,27 +13,18 @@ pathname=~/pictures/optiplex/
 exiftool -all= ${pathname}; exiftool -XMP:all= ${pathname}
 ls ${pathname}|sed 's/^/\![Screenshot]\(.previews\//g'|sed 's/$/)/g'
 ```
-
-
+![Screenshot](.previews/30.jpg)
+![Screenshot](.previews/26.jpg)
+![Screenshot](.previews/27.jpg)
+![Screenshot](.previews/24.jpg)
+![Screenshot](.previews/25.jpg)
 ![Screenshot](.previews/10.jpg)
 ![Screenshot](.previews/11.jpg)
 ![Screenshot](.previews/12.jpg)
 ![Screenshot](.previews/13.jpg)
-![Screenshot](.previews/14.jpg)
 ![Screenshot](.previews/15.jpg)
-![Screenshot](.previews/16.jpg)
-![Screenshot](.previews/17.jpg)
-![Screenshot](.previews/18.jpg)
-![Screenshot](.previews/19.jpg)
 ![Screenshot](.previews/1.jpg)
-![Screenshot](.previews/20.jpg)
 ![Screenshot](.previews/21.jpg)
-![Screenshot](.previews/22.jpg)
-![Screenshot](.previews/23.jpg)
-![Screenshot](.previews/24.jpg)
-![Screenshot](.previews/25.jpg)
-![Screenshot](.previews/26.jpg)
-![Screenshot](.previews/27.jpg)
 ![Screenshot](.previews/28.jpg)
 ![Screenshot](.previews/29.jpg)
 ![Screenshot](.previews/2.jpg)
