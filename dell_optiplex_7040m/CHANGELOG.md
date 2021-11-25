@@ -1,5 +1,7 @@
-CHANGELOG: 2021-11-16
 
+changelog: 2021-11-16
+
+     kernel config was updated once again, added all iptables modules for ipv4 incl 'state' wich was missing
      added fstab
      added grub config for bios
      added hardware info files
