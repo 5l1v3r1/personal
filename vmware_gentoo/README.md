@@ -2,6 +2,25 @@
 
 ![Screenshot](https://wuseman.nr1.nu/archive/gentoo_stuff/vmware_screenshot.png)
 
+# From vmware > qcow2
+The only file we care about though is the *.vmdk file as that is the one with the actual image
+
+We will be converting the vmdk to qcow2, really simple:
+
+```sh
+tar -xvf original.ova
+qemu-img convert -O qcow2 win10.vmdk win10.qcow2
+qemu-system-x86_64 -enable-kvm -cpu host  -smp 4  -device usb-ehci,id=ehci -device qemu-xhci,id=xhci -device usb-tablet,bus=xhci.0 -net nic  -net user -m 4192 -cdrom win10.qcow2
+```
+
+And vice versa, qcow2 into a vmware vmdk file:
+
+```sh
+qemu-img convert -f qcow2 -O vmdk windows.11.qcow2 windows.11.vmdk
+```sh
+
+It's amazing, I love virtual machines :) 
+
 # Nowadays (Releases from ~2020>)
 This has been a really tricky thing to get installed on Gentoo back in the days but last year it have become really easy
 
