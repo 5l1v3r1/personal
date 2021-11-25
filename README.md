@@ -48,6 +48,13 @@ printf '%s' "Done"
 
 ### Setup efiboomgr, this is how I boot my crypted gentoo setup on my machines if there is no need for other features (then I use grub)
 
+You should know how to edit this line otherwise, man efibootmgr
 ```sh
 efibootmgr -d /dev/sda -p 2 -c -L "Gentoo Linux" -l /vmlinuz-5.4.97-gentoo-x86_64 -u "cryptdevice=UUID=80bf5e3b-c34f-4917-b7e8-6733909ef5a8:latitude-rootfs root=UUID=80bf5e3b-c34f-4917-b7e8-6733909ef5a8 rw initrd=/initramfs-5.4.97-gentoo-x86_64.img"
+```
+
+### Install sys-boot/grub:2 with EFI support:
+
+```sh
+grub-install --boot-directory=/boot --bootloader-id=Gentoo  --target=x86_64-efi --efi-directory=/boot/EFI
 ```
