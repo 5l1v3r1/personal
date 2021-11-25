@@ -12,6 +12,7 @@ In this repository I will store everything that is related to my setups I using 
 More info and previews about my Dell Optiplex 7040M is stored in [dell_optiplex_7040m](https://github.com/wuseman/gentoo-wuseman/tree/main/dell_optiplex_7040m)
 
    ![Screenshot](https://raw.githubusercontent.com/wuseman/gentoo-wuseman/main/dell_optiplex_7040m/.previews/30.jpg)
+
 ### wupdate/wupdate.sh
 
 ![Screenshot](.previews/wupdate.png)
@@ -26,4 +27,22 @@ More info and previews about my Dell Optiplex 7040M is stored in [dell_optiplex_
    encrypted by twofish-xts-plain64 cipher with a keyfile on ~8MB and require keyfile on boot via an removable device.
 
 *   This script is not recommended to use for newbies, it has been created for myself whenever I would use this script again (there is better scrips/setups in this repo, if not stay tuned I will add more stuff to this repo - Added this text fyi: 2021-10-12) 
+
+### Create a UEFI bootable usb:
+
+I prefer using Ventoy for this, but if I dont have access to Ventoy I use below example:
+
+Prepare USB 
+
+### Of course, use the right device otherwise you will cry for being an idiot (been there 100 times myself): :) 
+
+```sh
+#!/bin/bash
+parted /dev/sdc -s print
+mkfs.vfat -F 32 /dev/<device>1
+mount /dev/<device>1 /<dev_mountpoint>
+mount /path/to/iso/Win10_1511_1_<Version>_<Language>_x64.iso /<iso_mountpoint>
+cp -R /<iso_mountpoint>/* /<dev_mountpoint>/
+printf '%s' "Done" 
+```
 
