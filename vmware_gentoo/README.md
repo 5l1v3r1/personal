@@ -75,6 +75,10 @@ You will now have a working vmware setup, but ey. Use the latest versions to avo
 
 ### Network Stuff
 
+Settings for your NAT and other net configurations is available in:
+
+    /etc/vmware/vmnet8/nat/nat.conf
+
 ```sh
 /usr/bin/vmnet-bridge -s 12 -d /var/run/vmnet-bridge-0.pid -n 0
 /usr/bin/vmnet-netifup -s 12 -d /var/run/vmnet-netifup-vmnet1.pid /dev/vmnet1 vmnet1
@@ -82,4 +86,19 @@ You will now have a working vmware setup, but ey. Use the latest versions to avo
 /usr/bin/vmnet-natd -s 12 -m /etc/vmware/vmnet8/nat.mac -c /etc/vmware/vmnet8/nat/nat.conf
 /usr/bin/vmnet-netifup -s 12 -d /var/run/vmnet-netifup-vmnet8.pid /dev/vmnet8 vmnet8
 /usr/bin/vmnet-dhcpd -s 12 -cf /etc/vmware/vmnet8/dhcpd/dhcpd.conf -lf /etc/vmware/vmnet8/dhcpd/dhcpd.leases -pf /var/run/vmnet-dhcpd-vmnet8.pid vmnet8
+```
+
+### Fuse mount
+
+```sh
+/usr/bin/vmware-fuseUI -s -r 8 -w 11 -p 23019
+```
+
+### Launch vmware from cli
+
+```sh
+/usr/lib/vmware/bin/vmware-vmx -s vmx.stdio.keep=TRUE -# \
+product=1;name=VMware Workstation;version=16.1.1;buildnumber=17801498;licensename=VMware \
+Workstation;licenseversion=16.0; -@ duplex=3;msgs=ui \
+/path/to/Windows_10_x64_Enterprise/Windows 10 x64 Enterprise.vmx
 ```
