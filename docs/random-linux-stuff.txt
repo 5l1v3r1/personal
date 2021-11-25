@@ -1,0 +1,225 @@
+
+# You only need iomem=relaxed if you are flashing a device from itself, 
+using a ch341a_spi or raspberry pi does not require it.
+
+http://redsymbol.net/linux-kernel-boot-parameters/2.6.31/
+https://outflux.net/blog/archives/2016/09/28/security-things-in-linux-v4-5/
+https://docs.oracle.com/cd/E72066_01/html/E72072/grzxv.html
+https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00060145en_us
+https://www.reddit.com/r/coreboot/comments/maff8i/setting_iomemrelaxed_with_systemdboot_instead_of/
+https://www.flashrom.org/FAQ
+https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1855338
+https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-a00060145en_us
+https://www.gitmemory.com/issue/corna/me_cleaner/309/704170306
+https://tinkerboarding.co.uk/forum/archive/index.php/thread-2171.html
+https://www.kernel.org/doc/html/v4.14/admin-guide/kernel-parameters.html
+https://doc.coreboot.org/flash_tutorial/int_flashrom.html
+http://sfdwhf.blogspot.com/2019/02/grub-iomemrelaxed-edithow-do-i-skip.html
+https://libreboot.org/docs/install/
+https://wiki.debian.org/RaspberryPi4
+https://guix.gnu.org/en/packages/intelmetool-4.7/
+https://notabug.org/lukeshu/libreboot/src/master/www/faq.md
+https://www.linuxquestions.org/questions/antix-mx-linux-127/how-to-make-openchrome-driver-work-with-antix-19-a-4175664747/
+https://git.lsd.cat/g/thinkpad-coreboot-qubes/src/master/config/grub.cfg
+https://www.python2.net/questions-1308741.htm
+https://stackoverflow.com/questions/54597068/modify-kernel-parameters-mmap-operation-not-permitted-eperm
+https://t.codebug.vip/questions-1666927.htm
+https://osboot.org/docs/install/
+https://stackoverflow.com/questions/54597068/modify-kernel-parameters-mmap-operation-not-permitted-eperm
+https://aaronkuehler.com/blog/2015/09/20/installing-coreboot---lenovo-thinkpax-x220/
+https://gitlab.com/systemrescue/systemrescue-sources/-/issues/184
+https://puri.sm/projects/coreboot/
+http://asjyutyk.blogspot.com/2019/03/grub-iomemrelaxed-edit.html
+https://advantech-ncg.zendesk.com/hc/en-us/articles/360051754831-GRUB-parameter-is-required-for-lbpcu-running-on-Debian-system-kernel-4-9-or-above-
+https://mlog.club/article/2285250
+https://support.lenovo.com/th/zh/solutions/HT507362
+https://www.harmonicflow.org/media/x220/grub.cfg
+
+
+
+Cool blog:
+https://blog.danman.eu/new-version-of-lenkeng-hdmi-over-ip-extender-lkv373a/
+
+# Ziddo stuff
+
+Best one for TTY/UART
+https://jjm2473.github.io/nas/2020/08/26/rtd129x-unbrick.en.html
+
+http://blog.zidoo.tv/
+https://blog.danman.eu/wp-content/uploads/2019/07/IMG_20190703_082945-1024x768.jpg?fbclid=IwAR2yBGYSjBghpLQ6rTvfdw3z6lh1ZStjw5933rCvuAyrU994grNgKQwoECQ
+https://blog.danman.eu/zidoo-x8-recovery/
+https://forum.xda-developers.com/t/new-zidoo-x9s-android-6-0-openwrt-powered-by-realtek-rtd1295-2-16gb-ac-wifi-gb-lan.3354803/
+https://blog.danman.eu/new-version-of-lenkeng-hdmi-over-ip-extender-lkv373a/
+https://www.getdroidtips.com/stock-firmware-zidoo-x9s-tv-box/
+https://gsmdroid.net/download-zidoo-x9s-stock-rom-firmware/
+https://gsmdroid.net/download-zidoo-x9s-stock-rom-firmware/?xurl=https%3A%2F%2Fen.usb-driver.net%2F
+http://blog.zidoo.tv/2015/02/06/how-to-flash-the-zidoo-x9-firmware/
+https://blog.geekbuying.com/2015/02/zidoo-x9-v1-0-2-6-firmware-and-flash-method-released-20150210/
+http://blog.zidoo.tv/2015/02/02/how-to-upgrade-the-zidoo-x9-firmware/
+https://gsmdroid.net/download-zidoo-x9s-stock-rom-firmware/?xurl=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1VWmZ3tggFBx3gMFOx81n3fqa5IjkOU6m%2Fview%3Fusp%3Dsharing
+http://blog.zidoo.tv/2015/01/29/the-zidoo-development-team/
+https://gsmdroid.net/download-zidoo-x9s-stock-rom-firmware/
+http://blog.zidoo.tv/2015/02/02/x9-is-during-the-production-in-zidoo-factory/
+http://blog.zidoo.tv/2015/02/02/x9-is-during-the-production-in-zidoo-factory/
+
+https://www.zidoo.tv/Support/support_guide/guide_target/7WjcmduqUFZKKmVViAFMcQ%3D%3D.html
+https://xdafirmware.com/zidoo-x9s
+https://androidxda.com/zidoo-stock-rom/
+http://forum.zidoo.tv/index.php?threads/how-to-flash-zidoo-x9s-unit.2959/
+http://www.zidoo.tv/Support/guide/guide_target/7kv1voas1D1KKmVViAFMcQ%3D%3D/guide_faq/CN6lY0XMyIg%3D/faq_page/9nCdOWqz%2Bdw%3D.html
+http://forum.zidoo.tv/index.php?threads/how-to-flash-zidoo-x9s-unit.2959/page-17
+
+https://www.youtube.com/watch?time_continue=22&v=9OH_Dha_LyI&feature=emb_title
+
+
+-------------- COPIED FROM danman BLOG
+Read this page in a different language:
+🇨🇳 中文
+Term explanation
+Term	Explanation
+Target	The device that needs to be flashed, here is your box
+Host	The device performing the interaction, which is the PC you are using
+Unbrick with TTL/UART
+First of all, we should be able to connect to the UART.（Refer this if you are working with Z9S/Z10）
+
+Restore FWTABLE Signature
+If you get stuck when flash before, it is likely that the signature of fwtable (similar to the partition table) is destroyed, and the machine can no longer be flashed. In this case, just restore the fwtable signature.
+
+Shutdown the target device
+
+Connect UART, then hold the ESC key in the terminal and turn the target device on, until the terminal displays *** ESC Pressed *** (may not be the last line) or when the terminal is no longer scrolling, then release the ESC key. At this time, press the Enter key several times it should displays Realtek>
+
+Execution help in terminal, will display all supported commands, confirm whether they are included rtkemmc, dw and mw, if not, do not continue
+
+Execution rtkemmc read 0x03000000 12544 512 in terminal, it will load the header of fwtable to memory
+
+Execution dw 0x03000000 8. If it says 43534552 5f5f4555, goto next step; If it says 4f524556 5f5f414e, it means that the signature of fwtable is ok, we don’t need to touch it, we should try Unbrick with UART + U Disk, do not continue next step; If not either of both, I don’t know what’s going on, do not continue
+
+Execution mw 0x03000000 0x4f524556
+
+Execution mw 0x03000004 0x5f5f414e
+
+Execution dw 0x03000000 8. It should displays 4f524556 5f5f414e
+
+Execution rtkemmc write 0x03000000 12544 512, it will write back the header to fwtable
+
+Shutdown
+
+Signature of fwtable was restored, now we can follow the official guide to flash the target device. If it still fail in flashing, then try the Unbrick with UART + U Disk
+
+Unbrick with UART + U Disk
+Usually you can use this method to restore the firmware, unless uBoot is broken.
+
+Prepare a U disk with 2GB or more space, if it is not in FAT32 format, format it as FAT32.
+
+If you can get to this point, you must have tried the official flash tutorial (such as X9S, Z9S ), I believe you already have install.img。 install.img is actually a TAR packaged file. Unpack it and copy the bluecore.audio, emmc.uImage, rescue.emmc.dtb, rescue.root.emmc.cpio.gz_pad.img to the root directory of the U disk. install.img is also placed in the root directory of the U disk.
+
+We should have at least these files in the root directory of the U disk:
+
+bluecore.audio
+emmc.uImage
+rescue.emmc.dtb
+rescue.root.emmc.cpio.gz_pad.img
+install.img
+The U disk is ready.
+
+Flash process：
+
+Shutdown the target device and plug in the U disk
+
+Connect UART, then hold the ESC key in the terminal and turn the target device on, until the terminal displays *** ESC Pressed *** (may not be the last line) or when the terminal is no longer scrolling, then release the ESC key. At this time, press the Enter key several times it should displays Realtek>, it means that you have entered the uBoot console
+
+Execute help in terminal, will display all supported commands, confirm whether they are included usb, fatload and boot, if not, do not continue, try other solutions
+
+Execute usb start, this step enables USB and scans the USB devices, it will take a few seconds, and it will display Realtek> on finished. Check if there is any Storage Device(s) found in the output. If not, change the USB slot and perform this step again
+
+Execute these commands One By One:
+
+fatload usb 0:1 0x01b00000 bluecore.audio
+fatload usb 0:1 0x03000000 emmc.uImage
+fatload usb 0:1 0x02100000 rescue.emmc.dtb
+fatload usb 0:1 0x02200000 rescue.root.emmc.cpio.gz_pad.img
+If there was any error, change 0:1 to 0:2 0:3 or 0:4 and try again, depending on the partition of the U disk
+
+Execute boot all, the flashing will start soon without superise
+
+Unbrick with UART + TFTP + U Disk
+Usually you can use this method to restore the firmware, unless uBoot is broken.
+
+Please try the “Unbrick with UART + U Disk” solution first, if it not works, then try this.
+
+This solution requires:
+
+U Disk
+Network cable (for the target machine to access TFTP)
+If uBoot does not support usb or fatload commands in the “Unbrick with UART + U Disk” solution, but supports the net command, and tftp appears when the net command is executed, then tftp can be used to load the flashing environment.
+
+Prepare a U disk with 2GB or more space, if it is not in FAT32 format, format it as FAT32.
+
+Copy the install.img mentioned above to the root directory of the U disk so that the U disk is ready.
+
+Prepare a TFTP server, or deploy TFTP service on the Host, Windows users refer to this, Mac users refer to this.
+
+Unzip install.img and copy these files to the TFTP root directory:
+
+bluecore.audio
+emmc.uImage
+rescue.emmc.dtb
+rescue.root.emmc.cpio.gz_pad.img
+In this way, the TFTP service is also ready.
+
+Flash process：
+
+Shutdown the target device and plug in the U disk
+
+Connect UART, then hold the ESC key in the terminal and turn the target device on, until the terminal displays *** ESC Pressed *** (may not be the last line) or when the terminal is no longer scrolling, then release the ESC key. At this time, press the Enter key several times it should displays Realtek>, it means that you have entered the uBoot console
+
+Execute help in terminal, will display all supported commands, confirm whether they are included net and boot, if not, do not continue
+
+Configure the target network. First try DHCP automatic configuration, by execute net dhcp_client, it should output DHCP client start, wait a few seconds, if there is output netif en ip ..., then go to the next step; if there is no output, then manually configure the network, execute net ifconfig <IP address> <mask> 0.0.0.0, pay attention to replace <IP address> and <mask> with appropriate values ​​(if the TFTP server is in the internal network, it only needs to be in the same subnet as the TFTP server) (if Your TFTP service is on the external network, you need to replace 0.0.0.0 with the real gateway address, usually the router IP)
+
+Execute net ping <TFTP server IP> (replacing <TFTP server IP> with the IP of the TFTP server). If the network configuration is ok, it will output multiple ping: send ... and ping: recv .... When it is no longer outputting, press Enter to return to the console. If there is no output of ping: recv ..., there should be a problem with the network configuration, please solve it yourself.
+
+Execute these commands One By One (replace <TFTP server IP> with the IP of the TFTP server):
+
+env set tftpblocksize 1468
+net tftp 0x01b00000 <TFTP server IP> bluecore.audio
+net tftp 0x03000000 <TFTP server IP> emmc.uImage
+net tftp 0x02100000 <TFTP server IP> rescue.emmc.dtb
+net tftp 0x02200000 <TFTP server IP> rescue.root.emmc.cpio.gz_pad.img
+If there is a stuck, it may be that there is a problem with the TFTP service, or the firewall has blocked the TFTP communication. After troubleshooting these problems, you need to restart from the first step.
+
+Execute boot all, the flashing will start soon without superise
+
+PS: If there is not net command in uBoot, but tftp exists, replace step 3 to 6 by execute:
+
+   env set ipaddr <IP address>
+   env set serverip <TFTP server IP>
+   env set tftpblocksize 1468
+   tftp 0x01b00000 bluecore.audio
+   tftp 0x03000000 emmc.uImage
+   tftp 0x02100000 rescue.emmc.dtb
+   tftp 0x02200000 rescue.root.emmc.cpio.gz_pad.img
+PPS: If there is not boot command in uBoot, try go instead
+
+Flash UBOOT with UART
+If in the previous solutions, the Realtek> dit not even displayed, either you have plugged in the TX/RX backwards, or uBoot was broken. If you just follow the official tutorial to flash or OTA before, uBoot should not be broken.
+
+Refer https://bbs.nas66.com/thread-5553-1-1.html to flash uBoot.
+
+It should be noted that the dvrboot.exe.bin and the hwsetting.config mentioned in the tutorial is not the only one. Different devices or different functions may not use the same one dvrboot.exe.bin.
+
+Here is the corresponding files dumpd from Z9S:
+
+dvrboot.exe.bin
+hwsetting.config
+hwsetting.bin
+Flash by USB cable
+Refer
+
+https://www.cnx-software.com/2017/03/16/how-to-reinstall-android-firmware-on-realtek-rtd1295-tv-boxes/
+http://www.bee-link.com/forum.php?mod=viewthread&tid=1667
+I don’t have tried it, it may not works in Z9S.
+
+Attachments：
+
