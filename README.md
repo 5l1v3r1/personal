@@ -46,3 +46,8 @@ cp -R /<iso_mountpoint>/* /<dev_mountpoint>/
 printf '%s' "Done" 
 ```
 
+### Setup efiboomgr, this is how I boot my crypted gentoo setup on my machines if there is no need for other features (then I use grub)
+
+```sh
+efibootmgr -d /dev/sda -p 2 -c -L "Gentoo Linux" -l /vmlinuz-5.4.97-gentoo-x86_64 -u "cryptdevice=UUID=80bf5e3b-c34f-4917-b7e8-6733909ef5a8:latitude-rootfs root=UUID=80bf5e3b-c34f-4917-b7e8-6733909ef5a8 rw initrd=/initramfs-5.4.97-gentoo-x86_64.img"
+```
