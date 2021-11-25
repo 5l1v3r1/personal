@@ -71,3 +71,15 @@ sudo ln -s /lib/x86_64-linux-gnu/libz.so.1
 ```
 
 You will now have a working vmware setup, but ey. Use the latest versions to avoid all the trouble with the above shit.
+
+
+### Network Stuff
+
+```sh
+/usr/bin/vmnet-bridge -s 12 -d /var/run/vmnet-bridge-0.pid -n 0
+/usr/bin/vmnet-netifup -s 12 -d /var/run/vmnet-netifup-vmnet1.pid /dev/vmnet1 vmnet1
+/usr/bin/vmnet-dhcpd -s 12 -cf /etc/vmware/vmnet1/dhcpd/dhcpd.conf -lf /etc/vmware/vmnet1/dhcpd/dhcpd.leases -pf /var/run/vmnet-dhcpd-vmnet1.pid vmnet1
+/usr/bin/vmnet-natd -s 12 -m /etc/vmware/vmnet8/nat.mac -c /etc/vmware/vmnet8/nat/nat.conf
+/usr/bin/vmnet-netifup -s 12 -d /var/run/vmnet-netifup-vmnet8.pid /dev/vmnet8 vmnet8
+/usr/bin/vmnet-dhcpd -s 12 -cf /etc/vmware/vmnet8/dhcpd/dhcpd.conf -lf /etc/vmware/vmnet8/dhcpd/dhcpd.leases -pf /var/run/vmnet-dhcpd-vmnet8.pid vmnet8
+```
