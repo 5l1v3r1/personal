@@ -32,7 +32,7 @@ Enjoy vmware, it pwnz with a Legit License! :)
 
 Once you installed everything and things just hassles for you about modules and shit, it toke ages to figure out below: 
 
-´´´sh
+```sh
 VMWARE_VERSION=workstation-12.5.9
 TMP_FOLDER=/tmp/patch-vmware
 rm -fdr $TMP_FOLDER
@@ -47,6 +47,6 @@ sudo make install
 sudo rm /usr/lib/vmware/lib/libz.so.1/libz.so.1
 sudo ln -s /lib/x86_64-linux-gnu/libz.so.1 
 /usr/lib/vmware/lib/libz.so.1/libz.so.1
-´´´
+```
 
 You will now have a working vmware setup, but ey. Use the latest versions to avoid all the trouble with the above shit.
