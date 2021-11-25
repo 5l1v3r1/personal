@@ -1,4 +1,6 @@
-# Gentoo related stuff by wuseman
+# My personal stuff
+
+Just for fun and some might find something intresting cause I really, really **hacking everything** that is possible no matter what, I love it! I will share some failures and shit also in here and as said this is my personal stuff **use everything on your own risk, this is not a howto or help repo** :) 
 
 In this repository I will store everything that is related to my setups I using daily for servers, mobile and laptops and raspberry pies and so, Gentoo is my the only distro I use for evgerything even my dedi servers on Hetzner :) 
 
