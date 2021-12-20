@@ -4,3 +4,17 @@ torrent_stuff
 private
 private/
 private/*
+backup/
+bridge_gentoo
+configuration_files/
+hp_-_powerbook_AND_elitebook_hacking/dmidecode_full_elitebook-830-g6.txt
+scripts/backup_script.sh
+scripts/disktest.sh
+scripts/iptables-clear.sh
+scripts/iptables.sh
+scripts/run_after_reboot.sh
+scripts/send-to-irc.sh
+scripts/start-proxy.sh
+scripts/wautomount-sshfs.sh
+wpredator-install.sh
+
