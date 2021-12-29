@@ -4,7 +4,7 @@ kernel-config is a minimal kernel config for this, I changed wifi card so this i
 
 Also twofish-xts-plain64 is used for encryption so you should change this to your needs, otherwise its not much to edit from a default setup with only needed modules. 
 
-- Screenfetch
+- Screenfetch from livecd in chroot
 - 
 ![Screenshot](.previews/screenfetch.png)
 
