@@ -1,5 +1,10 @@
 ### Latitude E7250
 
+kernel-config is a minimal kernel config for this, I changed wifi card so this is the only thing that is not default - Just deselect ath10k_pci and ath10k_core and set iwlwifi as wifi module instead if you have the default card and wanna use my kernel config.
+
+Also twofish-xts-plain64 is used for encryption so you should change this to your needs, otherwise its not much to edit from a default setup with only needed modules. 
+
+- Screenfetch
 ![Screenshot](.previews/screenfetch.png)
 
 This laptop toke ~24h from scratch until plasma-meta was installed, during entire setup CPU was around ~95c-103c, never saw a cpu temp above 96c before, crazy and CPU Fan was around ~7000RPM :P
