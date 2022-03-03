@@ -6,8 +6,8 @@
 #      FileName: chroot_20220203.sh
 #       Version: 1.0
 #
-#       Created: 2013-00-00 (00:00:00)
-#      Modified: 2022-02-23 (05:21:09)
+#       Created: 2022-02-23 (05:21:09)
+#      Modified: 
 #
 #           iRC: wuseman (Libera/EFnet/LinkNet) 
 #       Website: https://www.nr1.nu/
