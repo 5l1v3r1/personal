@@ -17,7 +17,7 @@ And vice versa, qcow2 into a vmware vmdk file:
 
 ```sh
 qemu-img convert -f qcow2 -O vmdk windows.11.qcow2 windows.11.vmdk
-```sh
+```
 
 How to import the vmdk into vmware-workstation you should know if you went this far
 
