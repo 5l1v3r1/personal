@@ -1,0 +1,185 @@
+Dell Optiplex 
+
+(chroot) optiplex /usr/src/linux # make localyesconfig
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = "",
+        LC_ALL = (unset),
+        LC_ADDRESS = "sv_SE.UTF-8",
+        LC_NAME = "sv_SE.UTF-8",
+        LC_MONETARY = "sv_SE.UTF-8",
+        LC_PAPER = "sv_SE.UTF-8",
+        LC_IDENTIFICATION = "sv_SE.UTF-8",
+        LC_TELEPHONE = "sv_SE.UTF-8",
+        LC_MEASUREMENT = "sv_SE.UTF-8",
+        LC_TIME = "sv_SE.UTF-8",
+        LC_COLLATE = "C",
+        LC_NUMERIC = "C",
+        LANG = "C.UTF8"
+    are supported and installed on your system.
+perl: warning: Falling back to a fallback locale ("C.UTF8").
+using config: '.config'
+glue_helper config not found!!
+WARNING: SND_SEQ_MIDI_EVENT is required, but nothing in the
+  current config selects it.
+WARNING: DELL_WMI_DESCRIPTOR is required, but nothing in the
+  current config selects it.
+WARNING: CRYPTO_SIMD is required, but nothing in the
+  current config selects it.
+WARNING: SND_COMPRESS_OFFLOAD is required, but nothing in the
+  current config selects it.
+WARNING: SND_DMAENGINE_PCM is required, but nothing in the
+  current config selects it.
+WARNING: INTEL_RAPL_CORE is required, but nothing in the
+  current config selects it.
+WARNING: BT_INTEL is required, but nothing in the
+  current config selects it.
+WARNING: SOUNDWIRE_GENERIC_ALLOCATION is required, but nothing in the
+  current config selects it.
+WARNING: SND_RAWMIDI is required, but nothing in the
+  current config selects it.
+WARNING: AC97_BUS is required, but nothing in the
+  current config selects it.
+WARNING: CRYPTO_USER_API is required, but nothing in the
+  current config selects it.
+WARNING: CRYPTO_TWOFISH_COMMON is required, but nothing in the
+  current config selects it.
+WARNING: BT_BCM is required, but nothing in the
+  current config selects it.
+WARNING: BT_RTL is required, but nothing in the
+  current config selects it.
+WARNING: SOUNDWIRE_CADENCE is required, but nothing in the
+  current config selects it.
+WARNING: CRYPTO_ECC is required, but nothing in the
+  current config selects it.
+WARNING: KVM_XFER_TO_GUEST_WORK is required, but nothing in the
+  current config selects it.
+module ee1004 did not have configs CONFIG_EEPROM_EE1004
+module algif_skcipher did not have configs CONFIG_CRYPTO_USER_API_SKCIPHER
+module ghash_clmulni_intel did not have configs CONFIG_CRYPTO_GHASH_CLMUL_NI_INTEL
+module coretemp did not have configs CONFIG_SENSORS_CORETEMP
+module snd_pcm_dmaengine did not have configs CONFIG_SND_DMAENGINE_PCM
+module snd_hda_codec_realtek did not have configs CONFIG_SND_HDA_CODEC_REALTEK
+module intel_rapl_msr did not have configs CONFIG_INTEL_RAPL
+module aesni_intel did not have configs CONFIG_CRYPTO_AES_NI_INTEL
+module twofish_x86_64 did not have configs CONFIG_CRYPTO_TWOFISH_X86_64
+module btrtl did not have configs CONFIG_BT_RTL
+module ppdev did not have configs CONFIG_PPDEV
+module cec did not have configs CONFIG_CEC_CORE CONFIG_RAS_CEC
+module bluetooth did not have configs CONFIG_BT
+module wmi did not have configs CONFIG_ACPI_WMI
+module efi_pstore did not have configs CONFIG_EFI_VARS_PSTORE
+module soundwire_bus did not have configs CONFIG_SOUNDWIRE
+module algif_hash did not have configs CONFIG_CRYPTO_USER_API_HASH
+module snd_rawmidi did not have configs CONFIG_SND_RAWMIDI
+module intel_pch_thermal did not have configs CONFIG_INTEL_PCH_THERMAL
+module acpi_pad did not have configs CONFIG_ACPI_PROCESSOR_AGGREGATOR
+module joydev did not have configs CONFIG_INPUT_JOYDEV
+module twofish_common did not have configs CONFIG_CRYPTO_TWOFISH_COMMON
+module crct10dif_pclmul did not have configs CONFIG_CRYPTO_CRCT10DIF_PCLMUL
+module xhci_pci_renesas did not have configs CONFIG_USB_XHCI_PCI_RENESAS
+module snd_usb_audio did not have configs CONFIG_SND_USB_AUDIO
+module ecc did not have configs CONFIG_CRYPTO_ECC
+module ac97_bus did not have configs CONFIG_AC97_BUS
+module snd_hda_codec_hdmi did not have configs CONFIG_SND_HDA_CODEC_HDMI
+module rfcomm did not have configs CONFIG_BT_RFCOMM
+module intel_rapl_common did not have configs CONFIG_INTEL_RAPL_CORE
+module ledtrig_audio did not have configs CONFIG_LEDS_TRIGGER_AUDIO
+module uas did not have configs CONFIG_USB_UAS
+module lp did not have configs CONFIG_PRINTER
+module mc did not have configs CONFIG_MEDIA_SUPPORT
+module twofish_x86_64_3way did not have configs CONFIG_CRYPTO_TWOFISH_X86_64_3WAY
+module snd_usbmidi_lib did not have configs CONFIG_SND_USB_AUDIO CONFIG_SND_USB_UA101 CONFIG_SND_USB_USX2Y CONFIG_SND_USB_US122L
+module mei did not have configs CONFIG_INTEL_MEI
+module snd_compress did not have configs CONFIG_SND_COMPRESS_OFFLOAD
+module parport_pc did not have configs CONFIG_PARPORT_PC
+module dm_crypt did not have configs CONFIG_DM_CRYPT
+module bnep did not have configs CONFIG_BT_BNEP
+module btusb did not have configs CONFIG_BT_HCIBTUSB
+module snd_hda_codec_generic did not have configs CONFIG_SND_HDA_GENERIC
+module crypto_simd did not have configs CONFIG_CRYPTO_SIMD
+module cryptd did not have configs CONFIG_CRYPTO_CRYPTD
+module rc_core did not have configs CONFIG_RC_CORE
+module soundwire_cadence did not have configs CONFIG_SOUNDWIRE_CADENCE
+module kvm_intel did not have configs CONFIG_KVM_INTEL
+module iwlwifi did not have configs CONFIG_IWLWIFI
+module snd_seq_midi_event did not have configs CONFIG_SND_SEQ_MIDI_EVENT
+module snd_soc_core did not have configs CONFIG_SND_SOC
+module dell_wmi did not have configs CONFIG_DELL_WMI
+module snd_seq_midi did not have configs CONFIG_SND_SEQ_MIDI
+module intel_powerclamp did not have configs CONFIG_INTEL_POWERCLAMP
+module dell_smbios did not have configs CONFIG_DELL_SMBIOS
+module af_alg did not have configs CONFIG_CRYPTO_USER_API
+module mei_me did not have configs CONFIG_INTEL_MEI_ME
+module kvm did not have configs CONFIG_KVM_GUEST CONFIG_KVM_E500V2 CONFIG_KVM_E500MC CONFIG_KVM_BOOK3S_64 CONFIG_KVM_BOOK3S_32 CONFIG_KVM CONFIG_
+module dcdbas did not have configs CONFIG_DCDBAS
+module btintel did not have configs CONFIG_BT_INTEL
+module ecdh_generic did not have configs CONFIG_CRYPTO_ECDH
+module sch_fq_codel did not have configs CONFIG_NET_SCH_FQ_CODEL
+module soundwire_intel did not have configs CONFIG_SOUNDWIRE_INTEL
+module wmi_bmof did not have configs CONFIG_WMI_BMOF
+module soundwire_generic_allocation did not have configs CONFIG_SOUNDWIRE_GENERIC_ALLOCATION
+module dell_wmi_descriptor did not have configs CONFIG_DELL_WMI_DESCRIPTOR
+module twofish_avx_x86_64 did not have configs CONFIG_CRYPTO_TWOFISH_AVX_X86_64
+module mei_hdcp did not have configs CONFIG_INTEL_MEI_HDCP
+module iwlmvm did not have configs CONFIG_IWLMVM
+module crc32_pclmul did not have configs CONFIG_CRYPTO_CRC32_PCLMUL
+module btbcm did not have configs CONFIG_BT_BCM
+module parport did not have configs CONFIG_PARPORT
+module twofish_generic did not have configs CONFIG_CRYPTO_TWOFISH
+#
+# configuration written to .config
+#
+
+
+root@optiplex:/home/wuseman# lspci -nnk
+00:00.0 Host bridge [0600]: Intel Corporation Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers [8086:191f] (rev 07)
+        Subsystem: Dell Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Host Bridge/DRAM Registers [1028:06b9]
+        Kernel driver in use: skl_uncore
+00:01.0 PCI bridge [0604]: Intel Corporation 6th-10th Gen Core Processor PCIe Controller (x16) [8086:1901] (rev 07)
+        Kernel driver in use: pcieport
+00:02.0 VGA compatible controller [0300]: Intel Corporation HD Graphics 530 [8086:1912] (rev 06)
+        Subsystem: Dell HD Graphics 530 [1028:06b9]
+        Kernel driver in use: i915
+        Kernel modules: i915
+00:14.0 USB controller [0c03]: Intel Corporation 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller [8086:a12f] (rev 31)
+        Subsystem: Dell 100 Series/C230 Series Chipset Family USB 3.0 xHCI Controller [1028:06b9]
+        Kernel driver in use: xhci_hcd
+        Kernel modules: xhci_pci
+00:14.2 Signal processing controller [1180]: Intel Corporation 100 Series/C230 Series Chipset Family Thermal Subsystem [8086:a131] (rev 31)
+        Subsystem: Dell 100 Series/C230 Series Chipset Family Thermal Subsystem [1028:06b9]
+        Kernel driver in use: intel_pch_thermal
+        Kernel modules: intel_pch_thermal
+00:16.0 Communication controller [0780]: Intel Corporation 100 Series/C230 Series Chipset Family MEI Controller #1 [8086:a13a] (rev 31)
+        Subsystem: Dell 100 Series/C230 Series Chipset Family MEI Controller [1028:06b9]
+        Kernel driver in use: mei_me
+        Kernel modules: mei_me
+00:16.3 Serial controller [0700]: Intel Corporation 100 Series/C230 Series Chipset Family KT Redirection [8086:a13d] (rev 31)
+        Subsystem: Dell 100 Series/C230 Series Chipset Family KT Redirection [1028:06b9]
+        Kernel driver in use: serial
+00:17.0 RAID bus controller [0104]: Intel Corporation SATA Controller [RAID mode] [8086:2822] (rev 31)
+        Subsystem: Dell SATA Controller [RAID mode] [1028:06b9]
+        Kernel driver in use: ahci
+        Kernel modules: ahci
+00:1c.0 PCI bridge [0604]: Intel Corporation 100 Series/C230 Series Chipset Family PCI Express Root Port #8 [8086:a117] (rev f1)
+        Kernel driver in use: pcieport
+00:1f.0 ISA bridge [0601]: Intel Corporation Q170 Chipset LPC/eSPI Controller [8086:a146] (rev 31)
+        Subsystem: Dell Q170 Chipset LPC/eSPI Controller [1028:06b9]
+00:1f.2 Memory controller [0580]: Intel Corporation 100 Series/C230 Series Chipset Family Power Management Controller [8086:a121] (rev 31)
+        Subsystem: Dell 100 Series/C230 Series Chipset Family Power Management Controller [1028:06b9]
+00:1f.3 Audio device [0403]: Intel Corporation 100 Series/C230 Series Chipset Family HD Audio Controller [8086:a170] (rev 31)
+        Subsystem: Dell 100 Series/C230 Series Chipset Family HD Audio Controller [1028:06b9]
+        Kernel driver in use: snd_hda_intel
+        Kernel modules: snd_hda_intel
+00:1f.4 SMBus [0c05]: Intel Corporation 100 Series/C230 Series Chipset Family SMBus [8086:a123] (rev 31)
+        Subsystem: Dell 100 Series/C230 Series Chipset Family SMBus [1028:06b9]
+        Kernel driver in use: i801_smbus
+        Kernel modules: i2c_i801
+00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (2) I219-LM [8086:15b7] (rev 31)
+        Subsystem: Dell Ethernet Connection (2) I219-LM [1028:06b9]
+        Kernel driver in use: e1000e
+        Kernel modules: e1000e
+02:00.0 Network controller [0280]: Intel Corporation Wireless 8260 [8086:24f3] (rev 3a)
+        Subsystem: Intel Corporation Wireless 8260 [8086:0050]
+        Kernel driver in use: iwlwifi
+        Kernel modules: iwlwifi

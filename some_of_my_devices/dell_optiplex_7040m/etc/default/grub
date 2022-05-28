@@ -1,0 +1,47 @@
+#---------------------------------------+
+#                                       |
+#   __      ____ _ _ __ _   _| |__      | Author: wuseman 
+#   \ \ /\ / / _` | '__| | | | '_ \     | Desc: Grub config for Dell Optiplex 7040m
+#    \ V  V / (_| | |  | |_| | |_) |    | 
+#     \_/\_/ \__, |_|   \__,_|_.__/     | 
+#            |___/                      |
+#                                       |
+# ------------------------------------- + 
+##
+## https://www.gnu.org/software/grub/manual/grub/grub.html#Features
+##
+# Some people like to acknowledge both the operating system and kernel when they talk about their computers, 
+# so they might say they use “GNU/Linux” or “GNU/Hurd”. Other people seem to think that the kernel is the most important part of the system, 
+# so they like to call their GNU operating systems “Linux systems.” 
+# # I, personally, believe that this is a grave injustice, because the boot loader is the most important software of all.
+# 
+# I used to refer to the above systems as either “LILO”5 or “GRUB” systems.
+# Unfortunately, nobody ever understood what I was talking about; now I just use the word “GNU” as a pseudonym for GRUB.
+# So, if you ever hear people talking about their alleged “GNU” systems, remember that they are actually paying homage to the best boot loader around… GRUB!
+
+
+#
+## https://www.gnu.org/software/grub/manual/grub/grub.html#Simple-configuration
+###
+#
+GRUB_DISTRIBUTOR="GNU/Linux Gentoo"
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_TIMEOUT_STYLE=menu
+# GRUB_HIDDEN_TIMEOUT=5
+# GRUB_TIMEOUT_STYLE=hidden 
+GRUB_CMDLINE_LINUX_DEFAULT="crypt_root=/dev/sda3 dolvm real_root=/dev/mapper/optiplex-rootfs root_keydev=/dev/sda2 root_key=optiplex_key.txt key_timeout=0 rootfstype=ext4 quiet video=HDMI-A-1:1920x1080"
+# GRUB_TERMINAL=console
+# GRUB_GFXMODE=1920x1080x32
+# GRUB_GFXPAYLOAD_LINUX=keep
+GRUB_DISABLE_LINUX_UUID=false
+GRUB_DISABLE_LINUX_PARTUUID=true # Set this to false if you gonna use UUID above
+GRUB_DISABLE_OS_PROBER=false
+# GRUB_PRELOAD_MODULES="part_gpt part_msdos lvm luks" 
+GRUB_ENABLE_CRYPTODISK=false
+GRUB_DISABLE_RECOVERY=false
+
+# Theme Related
+# -------------------------------------------------------------------
+## GRUB_BACKGROUND="/boot/grub/themes/gentoo_frosted/background.png"
+## GRUB_THEME="/boot/grub/themes/gentoo_frosted/theme.txt" 
