@@ -1,0 +1,13 @@
+# Add below into: /etc/xinet.d/glftpd for xinetd on your gentoo server
+
+service glftpd
+{
+    disable = no
+    flags           = REUSE IPv6 NAMEINARGS
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = root
+    server          = /usr/sbin/tcpd
+    server_args     = /glftpd/bin/glftpd -l -i -o   -e
+}
